@@ -133,13 +133,62 @@ abstract class W3_UI_PluginView {
         /**
          * Check memcached
          */
-        $memcaches_errors = array();
+        $memcacheds_errors = array();
 
         if ($this->_config->get_boolean('pgcache.enabled') && $this->_config->get_string('pgcache.engine') == 'memcached') {
             $pgcache_memcached_servers = $this->_config->get_array('pgcache.memcached.servers');
 
-            if (!$this->is_memcache_available($pgcache_memcached_servers)) {
+            if (!$this->is_memcached_available($pgcache_memcached_servers)) {
                 $memcaches_errors[] = sprintf(__('Page Cache: %s.', 'w3-total-cache'), implode(', ', $pgcache_memcached_servers));
+            }
+        }
+
+        if ($this->_config->get_boolean('minify.enabled') && $this->_config->get_string('minify.engine') == 'memcached') {
+            $minify_memcached_servers = $this->_config->get_array('minify.memcached.servers');
+
+            if (!$this->is_memcached_available($minify_memcached_servers)) {
+                $memcaches_errors[] = sprintf(__('Minify: %s.', 'w3-total-cache'), implode(', ', $minify_memcached_servers));
+            }
+        }
+
+        if ($this->_config->get_boolean('dbcache.enabled') && $this->_config->get_string('dbcache.engine') == 'memcached') {
+            $dbcache_memcached_servers = $this->_config->get_array('dbcache.memcached.servers');
+
+            if (!$this->is_memcached_available($dbcache_memcached_servers)) {
+                $memcacheds_errors[] = sprintf(__('Database Cache: %s.', 'w3-total-cache'), implode(', ', $dbcache_memcached_servers));
+            }
+        }
+
+        if ($this->_config->get_boolean('objectcache.enabled') && $this->_config->get_string('objectcache.engine') == 'memcached') {
+            $objectcache_memcached_servers = $this->_config->get_array('objectcache.memcached.servers');
+
+            if (!$this->is_memcached_available($objectcache_memcached_servers)) {
+                $memcacheds_errors[] = sprintf(__('Object Cache: %s.', 'w3-total-cache'), implode(', ', $objectcache_memcached_servers));
+            }
+        }
+
+        if (count($memcacheds_errors)) {
+            $memcached_error = __('The following memcached servers are not responding or not running:</p><ul>', 'w3-total-cache');
+
+            foreach ($memcacheds_errors as $memcacheds_error) {
+                $memcached_error .= '<li>' . $memcacheds_error . '</li>';
+            }
+
+            $memcached_error .= __('</ul><p>This message will automatically disappear once the issue is resolved.', 'w3-total-cache');
+
+            $this->_errors[] = $memcached_error;
+        }
+
+        /**
+         * Check memcache
+         */
+        $memcaches_errors = array();
+
+        if ($this->_config->get_boolean('pgcache.enabled') && $this->_config->get_string('pgcache.engine') == 'memcache') {
+            $pgcache_memcache_servers = $this->_config->get_array('pgcache.memcache.servers');
+
+            if (!$this->is_memcache_available($pgcache_memcache_servers)) {
+                $memcaches_errors[] = sprintf(__('Page Cache: %s.', 'w3-total-cache'), implode(', ', $pgcache_memcache_servers));
             }
         }
 
@@ -151,19 +200,19 @@ abstract class W3_UI_PluginView {
             }
         }
 
-        if ($this->_config->get_boolean('dbcache.enabled') && $this->_config->get_string('dbcache.engine') == 'memcached') {
-            $dbcache_memcached_servers = $this->_config->get_array('dbcache.memcached.servers');
+        if ($this->_config->get_boolean('dbcache.enabled') && $this->_config->get_string('dbcache.engine') == 'memcache') {
+            $dbcache_memcache_servers = $this->_config->get_array('dbcache.memcache.servers');
 
-            if (!$this->is_memcache_available($dbcache_memcached_servers)) {
-                $memcaches_errors[] = sprintf(__('Database Cache: %s.', 'w3-total-cache'), implode(', ', $dbcache_memcached_servers));
+            if (!$this->is_memcache_available($dbcache_memcache_servers)) {
+                $memcaches_errors[] = sprintf(__('Database Cache: %s.', 'w3-total-cache'), implode(', ', $dbcache_memcache_servers));
             }
         }
 
-        if ($this->_config->get_boolean('objectcache.enabled') && $this->_config->get_string('objectcache.engine') == 'memcached') {
-            $objectcache_memcached_servers = $this->_config->get_array('objectcache.memcached.servers');
+        if ($this->_config->get_boolean('objectcache.enabled') && $this->_config->get_string('objectcache.engine') == 'memcache') {
+            $objectcache_memcache_servers = $this->_config->get_array('objectcache.memcache.servers');
 
-            if (!$this->is_memcache_available($objectcache_memcached_servers)) {
-                $memcaches_errors[] = sprintf(__('Object Cache: %s.', 'w3-total-cache'), implode(', ', $objectcache_memcached_servers));
+            if (!$this->is_memcache_available($objectcache_memcache_servers)) {
+                $memcaches_errors[] = sprintf(__('Object Cache: %s.', 'w3-total-cache'), implode(', ', $objectcache_memcache_servers));
             }
         }
 
@@ -677,6 +726,35 @@ abstract class W3_UI_PluginView {
      * @return boolean
      */
     function is_memcache_available($servers) {
+        static $results = array();
+
+        $key = md5(implode('', $servers));
+
+        if (!isset($results[$key])) {
+            w3_require_once(W3TC_LIB_W3_DIR . '/Cache/Memcache.php');
+
+            @$memcache = new W3_Cache_Memcache(array(
+                'servers' => $servers,
+                'persistant' => false
+            ));
+
+            $test_string = sprintf('test_' . md5(time()));
+            $test_value = array('content' => $test_string);
+            $memcache->set($test_string, $test_value, 60);
+            $test_value = $memcache->get($test_string);
+            $results[$key] = ( $test_value['content'] == $test_string);
+        }
+
+        return $results[$key];
+    }
+
+    /**
+     * Check if memcached is available
+     *
+     * @param array $servers
+     * @return boolean
+     */
+    function is_memcached_available($servers) {
         static $results = array();
 
         $key = md5(implode('', $servers));

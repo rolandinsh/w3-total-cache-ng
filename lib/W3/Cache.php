@@ -8,6 +8,7 @@
  * W3 Cache engine types
  */
 define('W3TC_CACHE_MEMCACHED', 'memcached');
+define('W3TC_CACHE_MEMCACHE', 'memcache');
 define('W3TC_CACHE_APC', 'apc');
 define('W3TC_CACHE_EACCELERATOR', 'eaccelerator');
 define('W3TC_CACHE_XCACHE', 'xcache');
@@ -40,6 +41,11 @@ class W3_Cache {
                 case W3TC_CACHE_MEMCACHED:
                     w3_require_once(W3TC_LIB_W3_DIR . '/Cache/Memcached.php');
                     $instances[$instance_key] = new W3_Cache_Memcached($config);
+                    break;
+
+                case W3TC_CACHE_MEMCACHE:
+                    w3_require_once(W3TC_LIB_W3_DIR . '/Cache/Memcache.php');
+                    $instances[$instance_key] = new W3_Cache_Memcache($config);
                     break;
 
                 case W3TC_CACHE_APC:

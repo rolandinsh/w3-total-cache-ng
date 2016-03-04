@@ -60,6 +60,32 @@ class W3_AdminActions_TestActionsAdmin {
     }
 
     /**
+     * Test memcache
+     *
+     * @return void
+     */
+    function action_test_memcache() {
+        w3_require_once(W3TC_LIB_W3_DIR . '/Request.php');
+
+        $servers = W3_Request::get_array('servers');
+
+        if ($this->is_memcache_available($servers)) {
+            $result = true;
+            $error = __('Test passed.', 'w3-total-cache');
+        } else {
+            $result = false;
+            $error = __('Test failed.', 'w3-total-cache');
+        }
+
+        $response = array(
+            'result' => $result,
+            'error' => $error
+        );
+
+        echo json_encode($response);
+    }
+
+    /**
      * Test minifier action
      *
      * @return void

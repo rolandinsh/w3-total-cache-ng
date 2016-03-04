@@ -72,7 +72,10 @@
                             <option value="xcache"<?php selected($this->_config->get_string('pgcache.engine'), 'xcache'); ?><?php if (! $check_xcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: XCache', 'w3-total-cache'); ?></option>
                         <option value="wincache"<?php selected($this->_config->get_string('pgcache.engine'), 'wincache'); ?><?php if (! $check_wincache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: WinCache', 'w3-total-cache'); ?></option>
                         </optgroup>
-                        <optgroup label="<?php _e('Multiple Servers:', 'w3-total-cache'); ?>">
+                        <optgroup label="<?php _e('Memcache Multiple Servers:', 'w3-total-cache'); ?>">
+                            <option value="memcache"<?php selected($this->_config->get_string('pgcache.engine'), 'memcache'); ?><?php if (! $check_memcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcache', 'w3-total-cache'); ?></option>
+                        </optgroup>
+                        <optgroup label="<?php _e('Memcached Multiple Servers:', 'w3-total-cache'); ?>">
                             <option value="memcached"<?php selected($this->_config->get_string('pgcache.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
                         </optgroup>
                     </select>
@@ -130,7 +133,11 @@
                             <option value="xcache"<?php selected($this->_config->get_string('minify.engine'), 'xcache'); ?><?php if (! $check_xcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: XCache', 'w3-total-cache'); ?></option>
                             <option value="wincache"<?php selected($this->_config->get_string('minify.engine'), 'wincache'); ?><?php if (! $check_wincache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: WinCache', 'w3-total-cache'); ?></option>
                         </optgroup>
-                            <optgroup label="<?php _e('Multiple Servers:', 'w3-total-cache'); ?>">
+                            <optgroup label="<?php _e('Memcache Multiple Servers:', 'w3-total-cache'); ?>">
+                            <option value="memcache"<?php selected($this->_config->get_string('minify.engine'), 'memcache'); ?><?php if (! $check_memcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcache', 'w3-total-cache'); ?></option>
+                        </optgroup>
+                         </optgroup>
+                            <optgroup label="<?php _e('Memcached Multiple Servers:', 'w3-total-cache'); ?>">
                             <option value="memcached"<?php selected($this->_config->get_string('minify.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
                         </optgroup>
                     </select>
@@ -206,7 +213,10 @@
                             <option value="xcache"<?php selected($this->_config->get_string('dbcache.engine'), 'xcache'); ?><?php if (! $check_xcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: XCache', 'w3-total-cache'); ?></option>
                             <option value="wincache"<?php selected($this->_config->get_string('dbcache.engine'), 'wincache'); ?><?php if (! $check_wincache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: WinCache', 'w3-total-cache'); ?></option>
                     </optgroup>
-                        <optgroup label="Multiple Servers:">
+                        <optgroup label="Memcache Multiple Servers:">
+                            <option value="memcache"<?php selected($this->_config->get_string('dbcache.engine'), 'memcache'); ?><?php if (! $check_memcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcache', 'w3-total-cache'); ?></option>
+                        </optgroup>
+                         <optgroup label="Memcached Multiple Servers:">
                             <option value="memcached"<?php selected($this->_config->get_string('dbcache.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
                         </optgroup>
                     </select>
@@ -257,7 +267,10 @@
                             <option value="xcache"<?php selected($this->_config->get_string('objectcache.engine'), 'xcache'); ?><?php if (! $check_xcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: XCache', 'w3-total-cache'); ?></option>
                             <option value="wincache"<?php selected($this->_config->get_string('objectcache.engine'), 'wincache'); ?><?php if (! $check_wincache): ?> disabled="disabled"<?php endif; ?>><?php _e('Opcode: WinCache', 'w3-total-cache'); ?></option>
                     </optgroup>
-                        <optgroup label="<?php _e('Multiple Servers:', 'w3-total-cache'); ?>">
+                        <optgroup label="<?php _e('Memcache Multiple Servers:', 'w3-total-cache'); ?>">
+                            <option value="memcache"<?php selected($this->_config->get_string('objectcache.engine'), 'memcache'); ?><?php if (! $check_memcache): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcache', 'w3-total-cache'); ?></option>
+                        </optgroup>
+                        <optgroup label="<?php _e('Memcached Multiple Servers:', 'w3-total-cache'); ?>">
                             <option value="memcached"<?php selected($this->_config->get_string('objectcache.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
                         </optgroup>
                     </select>

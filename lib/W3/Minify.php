@@ -668,7 +668,7 @@ class W3_Minify {
                                                                          'servers' => $this->_config->get_array('minify.memcached.servers'),
                                                                          'persistant' => $this->_config->get_boolean('minify.memcached.persistant')
                                                                     ));
-                    $cache[0] = new Minify_Cache_Memcache($w3_cache_memcached, 0 , w3_get_blog_id(), w3_get_instance_id());
+                    $cache[0] = new Minify_Cache_Memcached($w3_cache_memcached, 0 , w3_get_blog_id(), w3_get_instance_id());
                     break;
 
                 case 'apc':

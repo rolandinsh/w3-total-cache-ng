@@ -139,7 +139,7 @@ abstract class W3_UI_PluginView {
             $pgcache_memcached_servers = $this->_config->get_array('pgcache.memcached.servers');
 
             if (!$this->is_memcached_available($pgcache_memcached_servers)) {
-                $memcaches_errors[] = sprintf(__('Page Cache: %s.', 'w3-total-cache'), implode(', ', $pgcache_memcached_servers));
+                $memcacheds_errors[] = sprintf(__('Page Cache: %s.', 'w3-total-cache'), implode(', ', $pgcache_memcached_servers));
             }
         }
 
@@ -147,7 +147,7 @@ abstract class W3_UI_PluginView {
             $minify_memcached_servers = $this->_config->get_array('minify.memcached.servers');
 
             if (!$this->is_memcached_available($minify_memcached_servers)) {
-                $memcaches_errors[] = sprintf(__('Minify: %s.', 'w3-total-cache'), implode(', ', $minify_memcached_servers));
+                $memcacheds_errors[] = sprintf(__('Minify: %s.', 'w3-total-cache'), implode(', ', $minify_memcached_servers));
             }
         }
 
@@ -192,11 +192,11 @@ abstract class W3_UI_PluginView {
             }
         }
 
-        if ($this->_config->get_boolean('minify.enabled') && $this->_config->get_string('minify.engine') == 'memcached') {
-            $minify_memcached_servers = $this->_config->get_array('minify.memcached.servers');
+        if ($this->_config->get_boolean('minify.enabled') && $this->_config->get_string('minify.engine') == 'memcache') {
+            $minify_memcache_servers = $this->_config->get_array('minify.memcache.servers');
 
-            if (!$this->is_memcache_available($minify_memcached_servers)) {
-                $memcaches_errors[] = sprintf(__('Minify: %s.', 'w3-total-cache'), implode(', ', $minify_memcached_servers));
+            if (!$this->is_memcache_available($minify_memcache_servers)) {
+                $memcaches_errors[] = sprintf(__('Minify: %s.', 'w3-total-cache'), implode(', ', $minify_memcache_servers));
             }
         }
 

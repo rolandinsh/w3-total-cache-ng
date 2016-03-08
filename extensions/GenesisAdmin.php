@@ -173,7 +173,7 @@ class W3_GenesisAdmin {
             'version' => '0.1',
             'enabled' => $activation_enabled,
             'requirements' => implode(', ', $message),
-            'path' => 'w3-total-cache/extensions/Genesis.php'
+            'path' => 'w3-total-cache-ng/extensions/Genesis.php'
         );
 
         return $extensions;

@@ -71,7 +71,7 @@ class W3_WordPressSEOAdmin {
             'version' => '1.0',
             'enabled' => $this->criteria_match(),
             'requirements' => implode(', ', $message),
-            'path' => 'w3-total-cache/extensions/WordPressSEO.php'
+            'path' => 'w3-total-cache-ng/extensions/WordPressSEO.php'
         );
 
         return $extensions;

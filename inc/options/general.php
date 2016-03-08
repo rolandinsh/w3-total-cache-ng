@@ -78,6 +78,9 @@
                         <optgroup label="<?php _e('Memcached Multiple Servers:', 'w3-total-cache'); ?>">
                             <option value="memcached"<?php selected($this->_config->get_string('pgcache.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
                         </optgroup>
+                        <optgroup label="<?php _e('Redis Server:', 'w3-total-cache'); ?>">
+                            <option value="redis"<?php selected($this->_config->get_string('pgcache.engine'), 'redis'); ?><?php if (! $check_redis): ?> disabled="disabled"<?php endif; ?>><?php _e('Redis', 'w3-total-cache'); ?></option>
+                        </optgroup>
                     </select>
                 </td>
             </tr>
@@ -139,6 +142,9 @@
                          </optgroup>
                             <optgroup label="<?php _e('Memcached Multiple Servers:', 'w3-total-cache'); ?>">
                             <option value="memcached"<?php selected($this->_config->get_string('minify.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
+                        </optgroup>
+                        <optgroup label="<?php _e('Redis Server:', 'w3-total-cache'); ?>">
+                            <option value="redis"<?php selected($this->_config->get_string('minify.engine'), 'redis'); ?><?php if (! $check_redis): ?> disabled="disabled"<?php endif; ?>><?php _e('Redis', 'w3-total-cache'); ?></option>
                         </optgroup>
                     </select>
                 </td>
@@ -219,6 +225,9 @@
                          <optgroup label="Memcached Multiple Servers:">
                             <option value="memcached"<?php selected($this->_config->get_string('dbcache.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
                         </optgroup>
+                        <optgroup label="<?php _e('Redis Server:', 'w3-total-cache'); ?>">
+                            <option value="redis"<?php selected($this->_config->get_string('dbcache.engine'), 'redis'); ?><?php if (! $check_redis): ?> disabled="disabled"<?php endif; ?>><?php _e('Redis', 'w3-total-cache'); ?></option>
+                        </optgroup>
                     </select>
                 </td>
             </tr>
@@ -272,6 +281,9 @@
                         </optgroup>
                         <optgroup label="<?php _e('Memcached Multiple Servers:', 'w3-total-cache'); ?>">
                             <option value="memcached"<?php selected($this->_config->get_string('objectcache.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>><?php _e('Memcached', 'w3-total-cache'); ?></option>
+                        </optgroup>
+                        <optgroup label="<?php _e('Redis Server:', 'w3-total-cache'); ?>">
+                            <option value="redis"<?php selected($this->_config->get_string('objectcache.engine'), 'redis'); ?><?php if (! $check_redis): ?> disabled="disabled"<?php endif; ?>><?php _e('Redis', 'w3-total-cache'); ?></option>
                         </optgroup>
                     </select>
                 </td>

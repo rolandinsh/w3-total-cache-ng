@@ -260,6 +260,21 @@ class W3_DbCache extends W3_DbProcessor {
                     );
                     break;
 
+                case 'memcache':
+                    $engineConfig = array(
+                        'servers' => $this->_config->get_array('dbcache.memcache.servers'),
+                        'persistant' => $this->_config->get_boolean('dbcache.memcache.persistant')
+                    );
+                    break;
+
+                case 'redis':
+                    $engineConfig = array(
+                        'server' => $this->_config->get_string('dbcache.redis.server'),
+                        'db' => $this->_config->get_integer('dbcache.redis.db'),
+                        'persistant' => $this->_config->get_boolean('dbcache.redis.persistant')
+                    );
+                    break;
+
                 case 'file':
                     $engineConfig = array(
                         'use_wp_hash', true,

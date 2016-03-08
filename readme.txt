@@ -1,15 +1,24 @@
 === Plugin Name ===
-Contributors: fredericktownes
+Contributors: fredericktownes, tperalta82
 Tags: w3totalcache, w3 totalcache, w3total cache, wpo, web performance optimization, performance, availability, scaling, scalability, user experience, cache, caching, page cache, css cache, js cache, db cache, disk cache, disk caching, database cache, http compression, gzip, deflate, minify, cdn, content delivery network, media library, performance, speed, multiple hosts, css, merge, combine, unobtrusive javascript, compress, optimize, optimizer, javascript, js, cascading style sheet, plugin, yslow, yui, google, google rank, google page speed, mod_pagespeed, new relic, newrelic, aws, s3, cloudfront, sns, elasticache, rds, flash media server, amazon web services, cloud files, rackspace, akamai, max cdn, limelight, cloudflare, mod_cloudflare, microsoft, microsoft azure, iis, nginx, litespeed, apache, varnish, xcache, apc, eacclerator, wincache, mysql, w3 total cache, batcache, wp cache, wp super cache, quick cache, wp minify, bwp-minify, buddypress
 Requires at least: 3.2
-Tested up to: 4.2
-Stable tag: 0.9.4.1
+Tested up to: 4.4.2
+Stable tag: 0.9.4.1-ng
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+This fork comes without any warranty, if it messes up your WP, blame my mother for having me.
+If you install both this fork and the original version, there will be dragons , do not do it.
 
 Easy Web Performance Optimization (WPO) using caching: browser, page, object, database, minify and content delivery network support.
 
 == Description ==
+This fork comes with the following extras:
+
+PHP7 Support
+Memcached Support
+Redis Support
+
 
 The **only** WordPress Performance Optimization (WPO) framework; designed to improve user experience and page speed.
 

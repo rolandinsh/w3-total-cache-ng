@@ -551,6 +551,21 @@ class W3_Pro_FragmentCache {
                     );
                     break;
 
+                case 'memcache':
+                    $engineConfig = array(
+                        'servers' => $this->_config->get_array('fragmentcache.memcache.servers'),
+                        'persistant' => $this->_config->get_boolean('fragmentcache.memcache.persistant')
+                    );
+                    break;
+
+                case 'redis':
+                    $engineConfig = array(
+                        'server' => $this->_config->get_string('fragmentcache.redis.servers'),
+                        'db' => $this->_config->get_integer('fragmentcache.redis.db'),
+                        'persistant' => $this->_config->get_boolean('fragmentcache.redis.persistant')
+                    );
+                    break;
+
                 case 'file':
                     $engineConfig = array(
                         'section' => 'fragment',

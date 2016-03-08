@@ -28,6 +28,9 @@
                  <optgroup label="Memcached Multiple Servers:">
                     <option value="memcached"<?php selected($this->_config->get_string('fragmentcache.engine'), 'memcached'); ?><?php if (! $check_memcached): ?> disabled="disabled"<?php endif; ?>>Memcached</option>
                 </optgroup>
+                 <optgroup label="Redis Server:">
+                    <option value="redis"<?php selected($this->_config->get_string('fragmentcache.engine'), 'redis'); ?><?php if (! $check_redis): ?> disabled="disabled"<?php endif; ?>>Redis</option>
+                </optgroup>
             </select>
         </td>
     </tr>

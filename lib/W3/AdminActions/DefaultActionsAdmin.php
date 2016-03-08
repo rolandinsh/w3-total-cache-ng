@@ -772,8 +772,9 @@ class W3_AdminActions_DefaultActionsAdmin {
                 array_map('stripslashes_deep', $request_value);
             else
                 $request_value = stripslashes($request_value);
-            if (strpos($request_key, 'memcached_servers'))
+            if (strpos($request_key, 'memcached_servers') || strpos($request_key, 'memcache_servers'))
                 $request_value = explode(',', $request_value);
+            
             $config->set($request_key, $request_value);
         }
     }

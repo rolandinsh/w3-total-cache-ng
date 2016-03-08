@@ -15,7 +15,7 @@ define('W3TC_LINK_URL', 'http://www.w3-edge.com/wordpress-plugins/');
 define('W3TC_LINK_NAME', 'W3 EDGE, Optimization Products for WordPress');
 define('W3TC_FEED_URL', 'http://feeds.feedburner.com/W3TOTALCACHE');
 define('W3TC_NEWS_FEED_URL', 'http://feeds.feedburner.com/W3EDGE');
-define('W3TC_README_URL', 'https://raw.githubusercontent.com/tperalta82/w3-total-cache/master/readme.txt');
+define('W3TC_README_URL', 'https://raw.githubusercontent.com/tperalta82/w3-total-cache-ng/master/readme.txt');
 define('W3TC_SUPPORT_US_TIMEOUT', 2592000);
 define('W3TC_SUPPORT_REQUEST_URL', 'https://www.w3-edge.com/w3tc/support/');
 define('W3TC_TRACK_URL', 'https://www.w3-edge.com/w3tc/track/');
